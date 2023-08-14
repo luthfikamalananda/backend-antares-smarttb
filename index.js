@@ -3,6 +3,15 @@ const app = express();
 
 const BASE_URL = 'https://platform.antares.id:8443/~';
 
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
 app.get("/trash01", async (req, res) => {
     const response = await fetch(`${BASE_URL}/antares-cse/antares-id/TrashIot/Trash-01?fu=1&ty=4&drt=1`, {
         method: "GET",
